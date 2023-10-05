@@ -5,7 +5,7 @@ pipeline {
     //     TOKEN     = credentials('clo')
     //
     // }
-    parameters {                    
+    parameters {
           string(
            name: 'BRANCH',
            defaultValue: 'feature/init',
@@ -25,6 +25,7 @@ pipeline {
               relativeTargetDir: 'app/']], gitTool: 'Default',
               submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ssh-git',
               url: 'git@github.com:RoboInterativo/robomath.git']]])
+              sh 'zip app.zip app -r'
 
          }
 
