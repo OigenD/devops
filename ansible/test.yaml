@@ -10,4 +10,16 @@
   - name: Display all variables/facts known for a host
     debug:
       var: test_user
+
+  - name: Update repositories cache and install "foo" package
+    apt:
+      name: unzip
+      update_cache: yes
+
+  - name: Extract foo.tgz into /var/lib/foo
+    unarchive:
+      src: app.zip
+      dest: /var/www
+
+
       # verbosity: 4

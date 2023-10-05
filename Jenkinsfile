@@ -26,6 +26,7 @@ pipeline {
               submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ssh-git',
               url: 'git@github.com:RoboInterativo/robomath.git']]])
               sh 'zip app.zip app -r'
+              sh 'mv app.zip ansible/files'
 
          }
 
