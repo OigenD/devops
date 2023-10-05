@@ -5,8 +5,32 @@ pipeline {
     //     TOKEN     = credentials('clo')
     //
     // }
+    parameters {                    
+          string(
+           name: 'BRANCH',
+           defaultValue: 'feature/init',
+           description: 'BRANCH'
+         )
+
+
+         }
 
    stages() {
+     stage('SCM') {
+       steps {
+         script{
+           checkout([$class: 'GitSCM', branches: [[name: BRANCH]],
+              doGenerateSubmoduleConfigurations: false,
+              extensions: [[$class: 'RelativeTargetDirectory',
+              relativeTargetDir: 'app/']], gitTool: 'Default',
+              submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'ssh-git',
+              url: 'git@github.com:RoboInterativo/robomath.git']]])
+
+         }
+
+       }
+
+     }
      stage('Test1' ) {
        steps {
          script {
@@ -19,6 +43,7 @@ pipeline {
                          installation: 'ansible29',
                          inventory: "ansible/inventories/dev/inventory",
                          playbook: "ansible/test.yaml"
+
 
          }
         }
