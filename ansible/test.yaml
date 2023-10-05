@@ -1,0 +1,8 @@
+---
+- name: Test ping host all
+  hosts: all
+  #become: yes
+  gather_facts: yes
+  tasks:
+  - name: Git checkout
+    ping:

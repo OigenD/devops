@@ -15,7 +15,10 @@ pipeline {
            pwd
            ls -li
            """
-
+           ansiblePlaybook extras: "-vv -u root --extra-vars \" inventory_dir=\"${WORKSPACE}/ansible/inventories/dev/\"\" ",
+                         installation: 'ansible29',
+                         inventory: "ansible/inventories/dev/inventory",
+                         playbook: "ansible/test.yaml"
 
          }
         }
