@@ -1,8 +1,13 @@
 ---
 - name: Test ping host all
-  hosts: all
+  hosts: web2
   #become: yes
   gather_facts: yes
   tasks:
   - name: Git checkout
     ping:
+
+  - name: Display all variables/facts known for a host
+    debug:
+      var: test_user
+      # verbosity: 4
