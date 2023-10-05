@@ -10,7 +10,12 @@ pipeline {
      stage('Test1' ) {
        steps {
          script {
-           sh 'echo HELLO'
+           sh """
+           echo HELLO
+           pwd
+           ls -li
+           """
+
 
          }
         }
